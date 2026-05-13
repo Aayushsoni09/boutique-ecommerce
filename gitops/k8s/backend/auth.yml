@@ -14,22 +14,21 @@ spec:
         app: auth
     spec:
       containers:
-        - name: auth
-          image: <AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/auth:1ebec3729cd10fe1eeac6f0858fba58e2da07956
-          ports:
-            - containerPort: 3002
-          env:
-            - name: NODE_ENV
-              value: development
-            - name: PORT
-              value: "3002"
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: boutique-secrets
-                  key: AUTH_DB_URL
-
---- 
+      - name: auth
+        image: 381491835701.dkr.ecr.ap-south-1.amazonaws.com/order-service:62661bab5c37b15684b37692a558baf463907c00
+        ports:
+        - containerPort: 3002
+        env:
+        - name: NODE_ENV
+          value: development
+        - name: PORT
+          value: "3002"
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: boutique-secrets
+              key: AUTH_DB_URL
+---
 
 apiVersion: v1
 kind: Service
@@ -40,7 +39,7 @@ spec:
   selector:
     app: auth
   ports:
-    - protocol: TCP
-      port: 3002
-      targetPort: 3002
+  - protocol: TCP
+    port: 3002
+    targetPort: 3002
   type: ClusterIP
