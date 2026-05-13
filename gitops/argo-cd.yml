@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/vishakhasadhwani/DevOps-Practice-Guide.git'
+    repoURL: 'https://github.com/Aayushsoni09/boutique-ecommerce.git'
     targetRevision: main
     path: gitops
   destination:
